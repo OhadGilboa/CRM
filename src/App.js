@@ -1,30 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { observer } from "mobx-react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { inject, observer } from "mobx-react";
+import Clients from "./Components/Clients/Clients";
+import Actions from "./Components/Actions/Actions";
+import Analytics from "./Components/Analytics/Analytics";
+import Header from "./Components/Header";
+import Homepage from "./Components/HomePage";
 
-@observer
-class App extends Component {
-  render() {
+const App = inject("clientsStore")(
+  observer(props => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Router>
+          <Header />
+          <Route exact path="/" render={() => <Homepage />} />
+          <Route exact path="/Clients" render={() => <Clients />} />
+          <Route exact path="/Actions" render={() => <Actions />} />
+          <Route exact path="/Analytics" render={() => <Analytics />} />
+        </Router>
       </div>
     );
-  }
-}
+  })
+);
 
 export default App;
