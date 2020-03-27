@@ -5,9 +5,11 @@ const Client = inject("clientsStore")(
   observer(props => {
     let clientsStore = props.clientsStore;
     let client = props.client;
-    let nameArr = client.name.split(" ")
-    let name = nameArr[0]
-    let surName = nameArr[1]
+    console.log(props);
+    let nameArr = client.name.split(" ");
+    let name = nameArr[0];
+    let surName = nameArr[1];
+
     return (
       <tr className={client.id}>
         <td className="name">{name} </td>

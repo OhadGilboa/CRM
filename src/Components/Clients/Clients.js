@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import { transaction } from "mobx";
 import Client from "./Client";
 
 const Clients = inject("clientsStore")(
   observer(props => {
-    let clientsStore = props.clientsStore;
+    let clients = props.clientsStore.clients;
+    useEffect(() => {
+      props.clientsStore.getClients();
+    }, []);
+
+    console.log(props.clientsStore.clients);
     return (
       <div>
         <input></input>
@@ -22,7 +27,7 @@ const Clients = inject("clientsStore")(
             </tr>
           </thead>
           <tbody>
-            {clientsStore.clients.map(c => (
+            {clients.map(c => (
               <Client client={c} />
             ))}
           </tbody>

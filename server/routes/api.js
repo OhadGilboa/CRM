@@ -1,17 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const Sequelize = require(`sequelize`);
+const sequelize = new Sequelize("mysql://root:12345678@localhost/sql_join");
 
-// router.get("/transactions", async (req, res) => {
-//   let t = await Transaction.find({})
-//   res.send(t)
-// });
 
-// router.post("/transaction", async (req, res) => {
-//   let body = req.body
-//   let trans = await new Transaction(body)
-//   await trans.save()
-//   res.send(trans)
-// });
+router.get("/Clients", async (req, res) => {
+  let result = await sequelize.query("SELECT * FROM Clients")
+  res.send(result)
+});
+
 
 // router.delete("/transaction/:id", async (req, res) => {
 //   const id = req.params.id;

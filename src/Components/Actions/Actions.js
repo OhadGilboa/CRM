@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
-import { inject, observer } from 'mobx-react';
+import React, { useState } from "react";
+import { inject, observer } from "mobx-react";
+import AddClient from "./AddClient";
+import UpdateClient from "./UpdateClient";
 
-const Actions = inject('clientsStore')(observer((props) => {
-    
+const Actions = inject("clientsStore")(
+  observer(props => {
     return (
-        <div></div>
-    )
-}))
+      <div>
+        <AddClient />
+        <UpdateClient />
+      </div>
+    );
+  })
+);
 
-export default Actions
+export default Actions;

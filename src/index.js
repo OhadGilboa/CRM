@@ -5,9 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import ClientsStore from './Stores/ClientsStore'
-let data = require(`../src/data.json`)
 
-let clientsStore = new ClientsStore(data)
+
+let clientsStore = new ClientsStore()
 
 let store = {clientsStore}
 
